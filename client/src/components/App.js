@@ -1,11 +1,47 @@
 import React from "react";
+import ShoppingCart from "./ShoppingCart";
+import ProductList from "./ProductList";
+import AddProductForm from "./AddProductForm";
+// State
+import productData from "../lib/data";
 
-const App = () => {
-  return (
-    <div id="app">
-      <h1>Welcome</h1>
-    </div>
-  );
-};
+/*
 
-export default App;
+- ShopApp // state goes here
+  - ShoppingCart // not to worry
+  - ProductContainer
+    - ProductList
+      - Product
+        - EditProductForm
+      - ⋮
+    - AddProductForm
+
+*/
+
+class ShopApp extends React.Component {
+  state = {
+    products: [],
+  };
+
+  componentDidMount() {
+    this.setState({ products: productData });
+  }
+
+  render() {
+    return (
+      <div id="app">
+        <header>
+          <h1>The Shop!</h1>
+          <ShoppingCart />
+        </header>
+
+        <main>
+          <ProductList products={this.state.products} />
+          <AddProductForm />
+        </main>
+      </div>
+    );
+  }
+}
+
+export default ShopApp;
