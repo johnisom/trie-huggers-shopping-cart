@@ -28,17 +28,17 @@ class EditProductForm extends React.Component {
         <form>
           <div class="input-group">
             <label for="product-name">Product Name</label>
-            <input type="text" id="product-name" value={title} />
+            <input type="text" id="product-name" value={this.state.title} />
           </div>
 
           <div class="input-group">
             <label for="product-price">Price</label>
-            <input type="text" id="product-price" value={price} />
+            <input type="text" id="product-price" value={this.state.price} />
           </div>
 
           <div class="input-group">
             <label for="product-quantity">Quantity</label>
-            <input type="text" id="product-quantity" value={quantity} />
+            <input type="text" id="product-quantity" value={this.state.quantity} />
           </div>
 
           <div class="actions form-actions">
