@@ -3,7 +3,6 @@ import ShoppingCart from "./ShoppingCart";
 import ProductList from "./ProductList";
 import AddProductForm from "./AddProductForm";
 // State
-import productData from "../lib/data";
 import axios from "axios";
 
 /*
