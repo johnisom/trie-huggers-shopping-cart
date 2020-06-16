@@ -1,7 +1,14 @@
 import React from "react";
 import EditProductForm from "./EditProductForm";
 
-const Product = function Product({ title, quantity, price }) {
+const Product = function Product({
+  title,
+  quantity,
+  price,
+  _id,
+  onDelete,
+  onEditSubmit,
+}) {
   return (
     <div className="product">
       <div className="product-details">
@@ -12,12 +19,22 @@ const Product = function Product({ title, quantity, price }) {
           <a className="button add-to-cart">Add to Cart</a>
           <a className="button edit">Edit</a>
         </div>
-        <a className="delete-button">
+        <a
+          className="delete-button"
+          onClick={() => {
+            onDelete(_id);
+          }}
+        >
           <span>X</span>
         </a>
       </div>
 
-      <EditProductForm title={title} quantity={quantity} price={price} />
+      <EditProductForm
+        title={title}
+        quantity={quantity}
+        price={price}
+        onSubmit={onEditSubmit}
+      />
     </div>
   );
 };
