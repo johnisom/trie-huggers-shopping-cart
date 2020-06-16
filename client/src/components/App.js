@@ -24,6 +24,7 @@ class ShopApp extends React.Component {
   };
 
   componentDidMount() {
+    fetch('api/products')
     this.setState({ products: productData });
   }
 

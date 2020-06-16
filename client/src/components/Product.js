@@ -17,7 +17,7 @@ const Product = function Product({ title, quantity, price }) {
         </a>
       </div>
 
-      <EditProductForm />
+      <EditProductForm title={title} quantity={quantity} price={price} />
     </div>
   );
 };
