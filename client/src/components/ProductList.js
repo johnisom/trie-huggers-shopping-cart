@@ -3,6 +3,7 @@ import Product from "./Product";
 
 const ProductList = function ProductList({
   products,
+  onAddToCart,
   onProductDelete,
   onEditSubmit,
 }) {
@@ -13,6 +14,7 @@ const ProductList = function ProductList({
         <Product
           key={product._id}
           {...product}
+          onAddToCart={onAddToCart}
           onDelete={onProductDelete}
           onEditSubmit={onEditSubmit}
         />
