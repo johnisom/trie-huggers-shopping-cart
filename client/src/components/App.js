@@ -52,11 +52,11 @@ class ShopApp extends React.Component {
       .then((response) => response.data)
       .then((updatedProduct) => {
         this.setState((prevState) => {
-          const products = prevState.products.map((product) => {
-            if (id === updatedProduct._id) {
+          const products = prevState.products.map((oldProduct) => {
+            if (oldProduct._id === updatedProduct._id) {
               return updatedProduct;
             } else {
-              return product;
+              return oldProduct;
             }
           });
 
@@ -151,10 +151,7 @@ class ShopApp extends React.Component {
   render() {
     return (
       <div id="app">
-        <header>
-          <h1>The Shop!</h1>
-          <ShoppingCart products={this.state.products} cart={this.state.cart} />
-        </header>
+        <ShoppingCart cart={this.state.cart} />
 
         <main>
           <ProductList
