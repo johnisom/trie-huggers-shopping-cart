@@ -1,6 +1,6 @@
 import React from "react";
 
-const ShoppingCart = function ShoppingCart({ cart }) {
+const ShoppingCart = function ShoppingCart({ cart, onCartEmpty }) {
   const items = cart.map((item) => {
     return (
       <tr key={item._id}>
@@ -45,7 +45,9 @@ const ShoppingCart = function ShoppingCart({ cart }) {
               </tr>
             </tbody>
           </table>
-          <a class="button checkout">Checkout</a>
+          <a class="button checkout" onClick={onCartEmpty}>
+            Checkout
+          </a>
         </div>
       )}
     </header>

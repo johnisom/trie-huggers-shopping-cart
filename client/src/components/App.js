@@ -139,6 +139,10 @@ class ShopApp extends React.Component {
     this.decrementProductQuantity(id);
   };
 
+  handleCartEmpty = () => {
+    // TODO: implement this
+  };
+
   componentDidMount() {
     axios
       .get("/api/products")
@@ -151,7 +155,10 @@ class ShopApp extends React.Component {
   render() {
     return (
       <div id="app">
-        <ShoppingCart cart={this.state.cart} />
+        <ShoppingCart
+          cart={this.state.cart}
+          onCartEmpty={this.handleCartEmpty}
+        />
 
         <main>
           <ProductList
