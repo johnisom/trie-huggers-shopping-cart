@@ -1,4 +1,6 @@
 import React from "react";
+import store from "../lib/store";
+// TODO: implement redux with cart
 
 const ShoppingCart = function ShoppingCart({ cart, onCartEmpty }) {
   const items = cart.map((item) => {

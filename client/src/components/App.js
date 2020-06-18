@@ -4,6 +4,7 @@ import ProductList from "./ProductList";
 import AddProductForm from "./AddProductForm";
 import axios from "axios";
 import store from "../lib/store";
+// TODO: implement redux with cart
 
 /*
 
