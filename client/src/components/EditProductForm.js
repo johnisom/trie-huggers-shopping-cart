@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import store from "../lib/store";
 
 class EditProductForm extends React.Component {
   state = {
@@ -13,17 +15,14 @@ class EditProductForm extends React.Component {
     });
   };
 
-  handleSubmit = (event) => {
+  handleEditSubmit = (event) => {
     event.preventDefault();
 
-    const product = {
+    this.props.onEditSubmit({
       title: this.state.title,
       quantity: this.state.quantity,
       price: this.state.price,
-    };
-
-    this.props.onEditSubmit(product, this.props.id);
-    this.props.onToggleForm();
+    });
   };
 
   render() {
@@ -65,7 +64,7 @@ class EditProductForm extends React.Component {
           </div>
 
           <div className="actions form-actions">
-            <a className="button" onClick={this.handleSubmit}>
+            <a className="button" onClick={this.handleEditSubmit}>
               Update
             </a>
             <a className="button" onClick={this.props.onToggleForm}>

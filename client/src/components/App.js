@@ -2,8 +2,8 @@ import React from "react";
 import ShoppingCart from "./ShoppingCart";
 import ProductList from "./ProductList";
 import AddProductForm from "./AddProductForm";
-// State
 import axios from "axios";
+import store from "../lib/store";
 
 /*
 
@@ -21,48 +21,6 @@ class ShopApp extends React.Component {
   state = {
     products: [],
     cart: [],
-  };
-
-  handleAddSubmit = (product) => {
-    axios
-      .post("/api/products", product)
-      .then((response) => response.data)
-      .then((newProduct) => {
-        this.setState((prevState) => {
-          return { products: prevState.products.concat(newProduct) };
-        });
-      });
-  };
-
-  handleProductDelete = (productId) => {
-    axios.delete(`/api/products/${productId}`).then(() => {
-      this.setState((prevState) => {
-        const products = prevState.products.filter((product) => {
-          return product._id !== productId;
-        });
-
-        return { products };
-      });
-    });
-  };
-
-  handleEditSubmit = (product, id) => {
-    axios
-      .put(`/api/products/${id}`, product)
-      .then((response) => response.data)
-      .then((updatedProduct) => {
-        this.setState((prevState) => {
-          const products = prevState.products.map((oldProduct) => {
-            if (oldProduct._id === updatedProduct._id) {
-              return updatedProduct;
-            } else {
-              return oldProduct;
-            }
-          });
-
-          return { products };
-        });
-      });
   };
 
   decrementProductQuantity = (id) => {
@@ -148,26 +106,21 @@ class ShopApp extends React.Component {
       .get("/api/products")
       .then((response) => response.data)
       .then((products) => {
-        this.setState({ products });
+        store.dispatch({
+          type: "PRODUCTS_FETCHED",
+          payload: { products },
+        });
       });
   }
 
   render() {
     return (
       <div id="app">
-        <ShoppingCart
-          cart={this.state.cart}
-          onCartEmpty={this.handleCartEmpty}
-        />
+        <ShoppingCart />
 
         <main>
-          <ProductList
-            products={this.state.products}
-            onAddToCart={this.handleAddToCart}
-            onProductDelete={this.handleProductDelete}
-            onEditSubmit={this.handleEditSubmit}
-          />
-          <AddProductForm onAddSubmit={this.handleAddSubmit} />
+          <ProductList />
+          <AddProductForm />
         </main>
       </div>
     );

@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import store from "../lib/store";
 
 class AddProductForm extends React.Component {
   state = {
@@ -29,7 +31,15 @@ class AddProductForm extends React.Component {
       price: this.state.price,
     };
 
-    this.props.onAddSubmit(product);
+    axios
+      .post("/api/products", product)
+      .then((response) => response.data)
+      .then((newProduct) => {
+        store.dispatch({
+          type: "PRODUCT_ADDED",
+          payload: { product: newProduct },
+        });
+      });
 
     this.setState({
       title: "",
