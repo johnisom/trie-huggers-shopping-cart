@@ -2,15 +2,7 @@ import React, { Component } from "react";
 import Product from "./Product";
 import store from "../lib/store";
 
-// const ProductList = function ProductList() {
 class ProductList extends Component {
-  // {
-  // products,
-  // onAddToCart,
-  // onProductDelete,
-  // onEditSubmit,
-  // }
-
   componentDidMount() {
     this.unsubscribe = store.subscribe(() => this.forceUpdate());
   }

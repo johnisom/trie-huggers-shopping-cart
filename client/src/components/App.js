@@ -117,7 +117,7 @@ class ShopApp extends React.Component {
   render() {
     return (
       <div id="app">
-        <ShoppingCart />
+        <ShoppingCart cart={this.state.cart} />
 
         <main>
           <ProductList />
