@@ -2,7 +2,7 @@ import React from "react";
 import store from "../lib/store";
 // TODO: implement redux with cart
 
-const ShoppingCart = function ShoppingCart({ cart, onCartEmpty }) {
+const ShoppingCart = function ShoppingCart({ cart, onCheckout }) {
   const items = cart.map((item) => {
     return (
       <tr key={item._id}>
@@ -24,7 +24,7 @@ const ShoppingCart = function ShoppingCart({ cart, onCartEmpty }) {
         <div className="cart">
           <h2>Your Cart</h2>
           <p>Your cart is empty</p>
-          <p>Total: ${}</p>
+          <p>Total: $0</p>
           <a className="button checkout disabled">Checkout</a>
         </div>
       ) : (
@@ -47,7 +47,7 @@ const ShoppingCart = function ShoppingCart({ cart, onCartEmpty }) {
               </tr>
             </tbody>
           </table>
-          <a class="button checkout" onClick={onCartEmpty}>
+          <a class="button checkout" onClick={onCheckout}>
             Checkout
           </a>
         </div>

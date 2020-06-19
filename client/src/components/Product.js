@@ -21,6 +21,9 @@ const Product = ({
           <div className="actions product-actions">
             <a
               className="button add-to-cart"
+              className={`button add-to-cart${
+                product.quantity === 0 ? " disabled" : ""
+              }`}
               onClick={() => onAddToCart(product)}
             >
               Add to Cart

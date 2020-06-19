@@ -1,3 +1,17 @@
+const decrementProductQuantity = (products, product) => {
+  const newProducts = products.map((oldProduct) => {
+    if (oldProduct._id === product._id) {
+      return Object.assign({}, oldProduct, {
+        quantity: oldProduct.quantity - 1,
+      });
+    } else {
+      return oldProduct;
+    }
+  });
+
+  return newProducts;
+};
+
 export default (state = [], action) => {
   switch (action.type) {
     case "PRODUCTS_FETCHED":
@@ -14,6 +28,13 @@ export default (state = [], action) => {
           return product;
         }
       });
+    case "ADDED_TO_CART":
+      const { product } = action.payload;
+      if (product.quantity === 0) {
+        return state;
+      }
+
+      return decrementProductQuantity(state, product);
     default:
       return state;
   }
