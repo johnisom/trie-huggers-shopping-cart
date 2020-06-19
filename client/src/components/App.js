@@ -1,6 +1,6 @@
 import React from "react";
 import ShoppingCart from "./ShoppingCart";
-import ProductList from "./ProductList";
+import ProductListContainer from "./ProductListContainer";
 import AddProductForm from "./AddProductForm";
 import axios from "axios";
 import store from "../lib/store";
@@ -102,25 +102,13 @@ class ShopApp extends React.Component {
     // TODO: implement this
   };
 
-  componentDidMount() {
-    axios
-      .get("/api/products")
-      .then((response) => response.data)
-      .then((products) => {
-        store.dispatch({
-          type: "PRODUCTS_FETCHED",
-          payload: { products },
-        });
-      });
-  }
-
   render() {
     return (
       <div id="app">
         <ShoppingCart cart={this.state.cart} />
 
         <main>
-          <ProductList />
+          <ProductListContainer />
           <AddProductForm />
         </main>
       </div>

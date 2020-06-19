@@ -4,18 +4,14 @@ import store from "../lib/store";
 
 class ProductList extends Component {
   componentDidMount() {
-    this.unsubscribe = store.subscribe(() => this.forceUpdate());
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
+    this.props.onFetchProducts();
   }
 
   render() {
     return (
       <div className="product-listing">
         <h2>Products</h2>
-        {store.getState().products.map((product) => (
+        {this.props.products.map((product) => (
           /* Note: maybe don't pass id */
           <Product key={product._id} product={product} />
         ))}
