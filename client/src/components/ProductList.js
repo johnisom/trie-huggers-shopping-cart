@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Product from "./Product";
+import ProductContainer from "./ProductContainer";
 import store from "../lib/store";
 
 class ProductList extends Component {
@@ -13,7 +13,7 @@ class ProductList extends Component {
         <h2>Products</h2>
         {this.props.products.map((product) => (
           /* Note: maybe don't pass id */
-          <Product key={product._id} product={product} />
+          <ProductContainer key={product._id} product={product} />
         ))}
       </div>
     );

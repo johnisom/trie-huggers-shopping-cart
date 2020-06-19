@@ -6,7 +6,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onEditSubmit: (product) => {
       axios
-        .put(`/api/products/${ownProps.product._id}`, product)
+        .put(`/api/products/${ownProps._id}`, product)
         .then((response) => response.data)
         .then((updatedProduct) => {
           dispatch({
